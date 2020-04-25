@@ -9,7 +9,7 @@ function Watcher(vm, exp, cb) {
     this.cb = cb;
     this.vm = vm;
     this.exp = exp;
-    this.value = this.get();  // 将自己添加到订阅器的实现方法
+    this.value = this.get();  // 将自己添加到订阅器的实现方法，实例化Watcher的时候执行
 }
 
 Watcher.prototype = {
@@ -21,6 +21,7 @@ Watcher.prototype = {
         var oldVal = this.value;
         if (value !== oldVal) {
             this.value = value;
+            // update的函数体，来自于初始化Watcher的时候传入
             this.cb.call(this.vm, value, oldVal);
         }
     },

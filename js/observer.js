@@ -27,6 +27,7 @@ Observer.prototype = {
             configurable: true,
             get: function getter() {
                 // 判断是否需要添加订阅者
+                // Dep.target这个值，逻辑看watcher.js文件，实例化Watcher的时候就有值了，开始执行加入sub的逻辑
                 if (Dep.target) {
                     dep.addSub(Dep.target);  // Watcher初始化的时候往加进Dep    
                 }
